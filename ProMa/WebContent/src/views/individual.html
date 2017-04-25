@@ -1,0 +1,48 @@
+<h2>Projects Under {{buname}} </h2>
+<div class="row">
+   <div class="col-md-8">
+      <table class = "table table-bordered table-striped table-hover">
+         <!-- <caption>Projects with {{buname}}</caption> -->
+         
+         <thead>
+            <tr>
+               <th>Customer</th>
+               <th>Project</th>
+               <th>Project Manager</th>
+               <th>Overall</th>
+               <th>Resources Working</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            <tr ng-repeat="project in projects">
+               <td>{{project.client.clientname}}</td>
+               <td>
+                  <a ng-href="#/project/{{project.projectid}}">
+                     {{project.projectname}}
+                  </a>
+               </td>
+               <td>{{project.projectmanager.username}}</td>
+               <td class="{{project.status}}">{{project.status}}</td>
+               <td>{{project.resourceworking}}</td>
+            </tr>
+         </tbody>
+         
+      </table>
+   </div>
+   <div class="col-md-4 well">
+      <h2>{{buname}}</h2>
+      <span>Headed By</span>
+      <ul ng-repeat="head in buDetails.buheads">
+      	<li>{{head.username}}</li>
+      </ul>
+      
+      
+   </div>
+
+</div>
+
+<div class="admin-section" ng-if="role=='admin'">
+   <button type="button" class="btn btn btn-primary" data-template-url="src/views/modals/admin-aside-dashboard.html" data-placement="right" data-animation="am-slide-right" bs-aside="aside" data-container="body">Launch Dashboard
+   </button>
+</div>

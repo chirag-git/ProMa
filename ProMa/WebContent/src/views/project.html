@@ -1,0 +1,99 @@
+<div class="row">
+	<div class="col-md-7">
+		<h2>{{projectDetails.projectname}}</h2>
+		<div class="well">
+			<h3>Project Details</h3>
+			<div class="row">
+				<div class="col-md-4" style="text-align: right;">
+					<span>Project Manager : </span>
+				</div>
+				<div class="col-md-8">
+					{{projectDetails.projectmanager.username}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4" style="text-align: right;">
+					<span>Client : </span>
+				</div>
+				<div class="col-md-8">{{projectDetails.client.clientname}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4" style="text-align: right;">
+					<span>No. of Resources Engaged : </span>
+				</div>
+				<div class="col-md-8">{{projectDetails.resourceworking}}</div>
+			</div>
+
+		</div>
+
+		<table class="table table-bordered table-striped table-hover">
+			<caption>Sprint Archive</caption>
+
+			<thead>
+				<tr>
+					<th>Milestones Achieved</th>
+					<th>Start Date</th>
+					<th>Projected End Date</th>
+					<th>Status</th>
+					<th>Actual End Date</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="sprint in sprints"
+					ng-class="sprint.completed_date==null ? 'info' : ''">
+					<td>{{sprint.milestone}}</td>
+					<td>{{sprint.startdate}}</td>
+					<td>{{sprint.enddate}}</td>
+					<td class="{{sprint.colour}}">{{sprint.colour}}</td>
+					<td>{{sprint.completed_date}}</td>
+				</tr>
+				<tr	ng-class="currentSprint.completed_date==null ? 'info' : ''">
+					<td>{{currentSprint.milestone}}</td>
+					<td>{{currentSprint.startdate}}</td>
+					<td>{{currentSprint.enddate}}</td>
+					<td class="{{currentSprint.colour}}">{{currentSprint.colour}}</td>
+					<td>
+					<span ng-if="currentSprint.completed_date == null">
+						Ongoing
+					</span>
+					<span ng-if="currentSprint.completed_date != null">
+						{{currentSprint.completed_date}}
+					</span>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-5">
+		<h3>Momentum Graph</h3>
+		<canvas id="line" class="chart chart-line" chart-data="data"
+			chart-labels="labels" chart-series="series" chart-options="options"
+			chart-dataset-override="datasetOverride" chart-click="onClick">
+	 </canvas>
+
+<div class="admin-section" ng-if="role=='admin'">
+	<div class="row" ng-if="projectDetails.completed == 0">
+		<button type="button" class="btn btn btn-success"
+			data-animation="am-fade-and-scale"
+			data-template-url="src/views/modals/admin-add-sprint-form.html"
+			bs-modal="modal" ng-if="projectDetails.currentSprint == null">Start a <br> new
+			Sprint</button>
+		
+		<button class="btn btn-danger" ng-click="closeSprint()"
+			ng-if="projectDetails.currentSprint != null">End Current Sprint</button>
+		<button type="button" class="btn btn btn-success"
+			data-animation="am-fade-and-scale"
+			data-template-url="src/views/modals/admin-edit-project-form-modal.html"
+			bs-modal="modal">Edit Project Details</button>
+		<button type="button" class="btn btn btn-success"
+			data-animation="am-fade-and-scale"
+			data-template-url="src/views/modals/admin-edit-sprint-form.html"
+			ng-if="projectDetails.currentSprint != null"
+			bs-modal="modal">Edit Current Sprint</button>
+	</div>
+</div>
+	</div>
+</div>

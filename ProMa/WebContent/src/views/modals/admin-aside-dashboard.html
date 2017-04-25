@@ -1,0 +1,28 @@
+
+<div class="aside" tabindex="-1" role="dialog">
+	<div class="aside-dialog">
+		<div class="aside-content">
+			<div class="aside-header">
+				<button type="button" class="close" ng-click="$hide()">&times;</button>
+				<h4 class="aside-title">Dashboard</h4>
+			</div>
+			<div class="aside-body">
+
+
+				<button type="button" class="btn btn btn-success"
+					data-animation="am-fade-and-scale"
+					data-template-url="src/views/modals/admin-add-project-form-modal.html"
+					bs-modal="modal">Add a Project</button>
+				<br>
+				<br>	
+				<button type="button" class="btn btn btn-success"
+					data-animation="am-fade-and-scale" ng-click="showBUHeadModal()">Add
+					a Business Unit Head</button>
+
+			</div>
+			<div class="aside-footer">
+				<button type="button" class="btn btn-primary" ng-click="$hide()">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

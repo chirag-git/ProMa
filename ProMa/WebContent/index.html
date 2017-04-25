@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="google-signin-client_id" content="956281975960-3demri6nn0lc1ou4fl3q4fbjmcrrp0ao.apps.googleusercontent.com">
+  <title>ProMa</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css">
+  <link rel="stylesheet" href="bower_components/bootstrap-additions/dist/bootstrap-additions.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script type="text/javascript">
+    
+    function onLoad() {
+	    gapi.load('auth2', function() {
+	    	//console.log("eubhdj");
+	      gapi.auth2.init();
+	    });
+	  }
+    function signOut() {
+    	//console.log("chdbj");
+    	//console.log(auth2);
+    	var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          //alert('User signed out.');
+          
+          var xhr = new XMLHttpRequest();
+    	  xhr.open('POST','/ProMa/rest/accounts/logout');
+    	  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    	  xhr.onreadystatechange = function(){
+    		  if (xhr.readyState==4 && xhr.status==200)
+    	    {
+    			  console.log("sjib");
+    	      location.href="/ProMa/login.html"  ;
+    	    } 
+    	}
+    	  xhr.send(); 
+          
+          
+        });
+      }
+  	
+    </script>
+    
+</head>
+<body ng-app="app" id="body">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/">Proma</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" onclick="signOut()">Logout</a></li>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+  
+  <div class="container">
+    <div ng-view></div>
+  </div>
+
+
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script> 
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/ng-animate.js"></script>
+  <script src="bower_components/chart.min.js"></script>
+  <script src="bower_components/angular-chart.min.js"></script>
+  
+  <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+
+
+  <script src="src/app/app.js"></script>
+</body>
+</html>

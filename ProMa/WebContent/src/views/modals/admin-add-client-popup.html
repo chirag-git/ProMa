@@ -1,0 +1,18 @@
+<div class="popover" tabindex="-1" style="width:200px;">
+	<div class="arrow"></div>
+	<h3 class="popover-title">Enter Client</h3>
+	<div class="popover-content">
+
+		<form class="form-horizontal" role="form" name="clientform"
+			ng-submit="addClient();$hide()">
+			<div class="form-group">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" id="client-form-clientName"
+						ng-model="fields.clientname"
+						placeholder="Client Name" />
+				</div>
+			</div>
+			<button type="submit" class="btn btn-success">Add</button>
+		</form>
+	</div>
+</div>

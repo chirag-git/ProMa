@@ -1,0 +1,51 @@
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+.top-right {
+	position: fixed;
+	width:40%;
+	margin-top:100px;
+	margin-left:300px;
+}
+
+.aside-backdrop {
+  z-index: 10 !important;
+}
+.modal-backdrop{
+  z-index: 1000 !important;
+}
+
+
+.GREEN {
+  background-color: #23a127;
+  color:white;
+}
+
+.YELLOW {
+  background-color: #ff851b;
+  color:white;
+}
+
+.RED {
+  background-color: #ff4136;
+  color:white;
+}
+
+.BLACK {
+  background-color: #000;
+  color:white;
+}

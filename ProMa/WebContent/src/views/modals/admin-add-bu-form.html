@@ -1,0 +1,31 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="overviewController">
+	<div class="modal-dialog">
+		<form class="form-horizontal" role="form" name="userform" ng-submit="$hide();addABU();">
+			<div class="modal-content">
+				<div class="modal-header"">
+					<button type="button" class="close" aria-label="Close"
+						ng-click="$hide()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Add a Business Unit</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="buname">Business Unit Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="buname"
+								ng-model="fields.buname" placeholder="Business Unit name" />
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+					<button type="submit" class="btn btn-primary">Add</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
+</div>

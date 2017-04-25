@@ -1,0 +1,60 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true"
+	ng-controller="projectController">
+	<div class="modal-dialog">
+		<form class="form-horizontal" role="form" name="sprintform"
+			ng-submit="addASprint();$hide()">
+			<div class="modal-content">
+				<div class="modal-header"">
+					<button type="button" class="close" aria-label="Close"
+						ng-click="$hide()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Start a Sprint</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="milestone">Milestone
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control"
+								id="sprint-form-milestone" ng-model="fields.milestone"
+								placeholder="Enter Milestones" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="startdate">Start
+							Date</label>
+						<div class="col-sm-10">
+							<input class="form-control"
+							ng-model="fields.startdate" data-date-format="yyyy-MM-dd"
+							data-date-type="number" data-min-date="02/10/86"
+							data-max-date="today" data-autoclose="1" name="startdate"
+							bs-datepicker type="text">
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="startdate">End
+							Date</label>
+						<div class="col-sm-10">
+							<input class="form-control"
+							ng-model="fields.enddate" data-date-format="yyyy-MM-dd"
+							data-date-type="number" data-min-date="today"
+							data-autoclose="1" name="enddate"
+							bs-datepicker type="text">
+						</div>
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+					<button type="submit" class="btn btn-primary">Start</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
+</div>

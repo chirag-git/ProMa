@@ -1,0 +1,47 @@
+<h2>Summary Dashboard</h2>          
+<div class="row">
+   <div class="col-md-8">
+      <table class = "table table-bordered table-striped table-hover">
+         
+         <thead>
+            <tr>
+               <th>BU Name</th>
+               <th>Total</th>
+               <th>Red</th>
+               <th>Yellow</th>
+               <th>Green</th>
+               <th>Black</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            <tr ng-repeat="project in projects" data-buid="{{project.bu.buid}}">
+                  <td><a ng-href="#/bu/{{project.bu.buid}}/{{project.bu.buname}}">{{project.bu.buname}}</a></td>
+                  <td>{{project.total}}</td>
+                  <td class='danger'>{{project.red}}</td>
+                  <td class='warning'>{{project.yellow}}</td>
+                  <td class='success'>{{project.green}}</td>
+                  <td class='' style="color:white;background-color:black;">{{project.black}}</td>
+            </tr>
+         </tbody>
+         
+      </table>
+   </div>
+   <div class="col-md-4" style="border:3px solid #777;border-radius:10px;">
+      <canvas style="margin-top:30px" id="pie" class="chart chart-pie"
+        chart-data="piedata" chart-labels="pielabels" chart-options="pieoptions" chart-colors="colours">
+      </canvas> 
+      <h3 style="text-align:center;">Overall Status</h3>
+   </div>
+</div>
+
+<div class="admin-section" ng-if="role=='admin'">
+   <button type="button" class="btn btn btn-success" data-animation="am-fade-and-scale" data-template-url="src/views/modals/admin-form-modal.html" bs-modal="modal">Grant Admin Priviledges
+   </button>
+   
+   <button type="button" class="btn btn btn-success" data-animation="am-fade-and-scale" data-template-url="src/views/modals/admin-remove-admin-modal.html" bs-modal="modal">Revoke Admin Priviledges
+   </button>
+   
+   <button type="button" class="btn btn btn-info" data-animation="am-fade-and-scale" data-template-url="src/views/modals/admin-add-bu-form.html" bs-modal="modal">Add a Business Unit
+   </button>
+</div>

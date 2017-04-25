@@ -1,0 +1,76 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true"
+	ng-controller="projectController"  style="z-index:999999;">
+	<div class="modal-dialog">
+		<form class="form-horizontal" role="form" name="editprojectform"
+			ng-submit="editAProject();$hide()">
+			<div class="modal-content">
+				<div class="modal-header"">
+					<button type="button" class="close" aria-label="Close"
+						ng-click="$hide()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Edit this Project</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="projectname">Project
+							Name </label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="editprojectname"
+								ng-model="editfields.projectname" 
+								ng-value="projectDetails.projectname" 
+								ng-init="editfields.projectname=projectDetails.projectname"
+								/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="client">Client</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="editclient"
+								ng-model="editfields.client.clientid">
+								<option ng-repeat="client in clients" value={{client.clientid}}>{{client.clientname}}</option>
+							</select>
+						</div>
+						<!-- <div class="col-sm-2">
+							<button type="button" class="btn btn-sm btn-info"
+								title="Add a Client" data-content=""
+								data-template-url="src/views/modals/admin-add-client-popup.html"
+								data-animation="am-flip-x" data-auto-close="1" bs-popover>
+								<small>Add Client</small>
+							</button>
+						</div> -->
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="projectmanager">Project
+							Manager</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="editprojectmanager"
+								ng-model="editfields.projectmanager.userid">
+								<option ng-repeat="user in users" value={{user.userid}}>{{user.username}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="resourceworking">No.
+							Of Resources</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="editresourceworking"
+								ng-model="editfields.resourceworking" placeholder="No. Of Resources" 
+								ng-value="projectDetails.resourceworking"
+								ng-init="editfields.resourceworking=projectDetails.resourceworking"
+								/>
+						</div>
+					</div>
+					<input type="hidden" name="buid" ng-model="editfields.bu.buid"
+						ng-value="{{projectDetails.bu.buid}}" ng-init="editfields.bu.buid=projectDetails.bu.buid">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+					<button type="submit" class="btn btn-primary">Save Changes</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
+</div>
